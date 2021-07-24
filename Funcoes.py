@@ -310,7 +310,6 @@ def busca_Largura_Nivel(Grafo, VInicial, tipo):
             u = Q.pop(0)
 
             for i in range(len(Grafo[u])):
-
                 if desc[Grafo[u][i][0]] == 0:
                     nivel[Grafo[u][i][0]] = nivel[u] + 1
 
@@ -435,7 +434,7 @@ def busca_Profundidade_Nivel(Grafo, VInicial, tipo):
         for i in range(len(nivel)):
             if nivel[i] != nivel[VInicial] or i == VInicial:
                 arquivo.write("%d : %d \n" % (i, nivel[i]))
-        return R
+        return nivel
     else:
         print("Escolha o Tipo correto!")
 
@@ -526,7 +525,7 @@ def conexo_principal(Grafo, tipo, VInicial = 0):
             if desempilhar:
                 S.pop()
         if Maior < len(R):
-            Maior = len(R)
+                Maior = len(R)
         if Menor > len(R):
             Menor = len(R)
         vprint = [] ##Guarda as componentes conexas

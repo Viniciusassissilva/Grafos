@@ -36,7 +36,7 @@ def Sub_Menu_114():
           "1 : Matriz\n"
           "2 : Lista\n")
 def Sub_Menu_12():
-    print("Menu: \n"
+    print("Parte 2 do Trabalho: \n"
           "0 : Menu anterior\n"
           "1 : Compara desempenho em custo de memoria Lista x Matriz \n"
           "2 : Compara desempenho em tempo de execução Lista x Matriz \n"
@@ -59,20 +59,39 @@ def Sub_Menu_123():
           "0 : Menu anterior\n"
           "1 : Lista \n"
           "2 : Matriz \n")
-
 def Sub_Menu_124():
     print("Componente conexo: \n"
           "0 : Menu anterior\n"
           "1 : Lista \n"
           "2 : Matriz \n")
 def Sub_Menu_13():
-    print("Menu: \n"
-          "1 : Distribuição Empirica \n"
-          "2 : Componentes conexas \n"
-          "3 : Informações do Grafo \n"
-          "4 : Nivel de cada vertice \n"
-          "5 : Componentes Conexos \n")
-
+    print("Parte 3 do Trabalho: \n"
+          "0 : Menu anterior\n"
+          "1 : Iniciar Grafo\n"
+          "2 : Distribuição Empirica \n"
+          "3 : Componentes conexas \n"
+          "4 : Busca Largura \n"
+          "5 : Diametro da Internet \n")
+def Sub_Menu_131():
+    print("Iniciar Grafo \n"
+          "0 : Menu anterior\n"
+          "1 : Lista \n"
+          "2 : Matriz \n")
+def Sub_Menu_132():
+    print("Distribuição empirica: \n"
+          "0 : Menu anterior\n"
+          "1 : Lista \n"
+          "2 : Matriz \n")
+def Sub_Menu_133():
+    print("Componente conexo: \n"
+          "0 : Menu anterior\n"
+          "1 : Lista \n"
+          "2 : Matriz \n")
+def Sub_Menu_134():
+    print("Busca em largura: \n"
+          "0 : Menu anterior\n"
+          "1 : Lista \n"
+          "2 : Matriz \n")
 def Menu_():
 
     print("Por padrão o arquivo de entrada é definido pelo arquivo teste: Entrada_Test.txt ")
@@ -263,49 +282,28 @@ def Menu_():
             if menu2 == 0:
                 menu1 = -1
         elif menu1 == 3:
-            Sub_Menu_12()
+            Sub_Menu_13()
             menu2 = int(input('Opcão: '))
             while menu2 != 0:
                 if menu2 == 1:
-                    Sub_Menu_121()
+                    Sub_Menu_131()
                     menu3 = int(input('Opcão: '))
                     while menu3 != 0:
                         if menu3 == 1:
-                            arq = open('collaboration_graph.txt', 'r')
+                            arq = open('as_graph.txt', 'r')
                             Lista = Funcoes.lista(arq)
                             menu3 = -1
                         elif menu3 == 2:
-                            arq = open('collaboration_graph.txt', 'r')
+                            arq = open('as_graph.txt', 'r')
                             Matriz = Funcoes.matriz(arq)
                             menu3 = -1
                         else:
-                            Sub_Menu_121()
+                            Sub_Menu_131()
                             menu3 = int(input('Opcão: '))
                     menu2 = -1
                     print()
                 elif menu2 == 2:
-                    Sub_Menu_122()
-                    menu3 = int(input('Opcão: '))
-                    while menu3 != 0:
-                        if menu3 == 1:
-                            Funcoes.busca_Largura(Lista, 1, 2)
-                            menu3 = -1
-                        elif menu3 == 2:
-                            Funcoes.busca_Profundidade(Lista, 1, 2)
-                            menu3 = -1
-                        elif menu3 == 3:
-                            Funcoes.busca_Largura(Matriz, 1, 1)
-                            menu3 = -1
-                        elif menu3 == 4:
-                            Funcoes.busca_Profundidade(Matriz, 1, 1)
-                            menu3 = -1
-                        else:
-                            Sub_Menu_122()
-                            menu3 = int(input('Opcão: '))
-                    menu2 = -1
-                    print()
-                elif menu2 == 3:
-                    Sub_Menu_123()
+                    Sub_Menu_132()
                     menu3 = int(input('Opcão: '))
                     while menu3 != 0:
                         if menu3 == 1:
@@ -317,12 +315,12 @@ def Menu_():
                             Funcoes.gerar_Grafico(Grau)
                             menu3 = -1
                         else:
-                            Sub_Menu_123()
+                            Sub_Menu_132()
                             menu3 = int(input('Opcão: '))
                     menu2 = -1
                     print()
-                elif menu2 == 4:
-                    Sub_Menu_124()
+                elif menu2 == 3:
+                    Sub_Menu_133()
                     menu3 = int(input('Opcão: '))
                     while menu3 != 0:
                         if menu3 == 1:
@@ -332,12 +330,35 @@ def Menu_():
                             Funcoes.conexo_principal(Matriz, 1)
                             menu3 = -1
                         else:
-                            Sub_Menu_124()
+                            Sub_Menu_133()
                             menu3 = int(input('Opcão: '))
                     menu2 = -1
                     print()
+                elif menu2 == 4:
+                    Sub_Menu_134()
+                    menu3 = int(input('Opcão: '))
+                    while menu3 != 0:
+                        if menu3 == 1:
+                            for i in range(5):
+                                nivel = Funcoes.busca_Largura_Nivel(Lista, i, 2)
+                                print(max(nivel), "Maior distancia do vertice %d" % (i))
+                            menu3 = -1
+                        elif menu3 == 2:
+                            for i in range(5):
+                                nivel = Funcoes.busca_Largura_Nivel(Matriz, i, 1)
+                                print(max(nivel), "Maior distancia do vertice %d" % (i))
+                            menu3 = -1
+                        else:
+                            Sub_Menu_134()
+                            menu3 = int(input('Opcão: '))
+                    menu2 = -1
+                    print()
+                elif menu2 == 5:
+                    nivel = Funcoes.busca_Profundidade_Nivel(Lista, 0, 2)
+                    print(max(nivel), "Diametro da Internet\n")
+                    menu2 = -1
                 else:
-                    Sub_Menu_12()
+                    Sub_Menu_13()
                     menu2 = int(input('Opcão: '))
             if menu2 == 0:
                 menu1 = -1
@@ -345,5 +366,3 @@ def Menu_():
         else:
             Sub_Menu_1()
             menu1 = int(input('Opcão: '))
-
-Menu_()
